@@ -42,3 +42,4 @@
 # End of https://www.gitignore.io/api/c++,assembler
 
 *.bin
+*.elf
