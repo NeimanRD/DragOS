@@ -1,2 +1,2 @@
-# simple-os
-A repository for my os development.
+# DragOS
+A simple hobbyist project
