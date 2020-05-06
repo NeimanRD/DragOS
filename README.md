@@ -1,2 +1,2 @@
-# DragOS
+# dragos
 A simple hobbyist project
