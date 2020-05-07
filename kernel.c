@@ -20,7 +20,8 @@ const int VGA_ROWS = 25;
 int term_col = 0;
 int term_row = 0;
 uint8_t term_color = 0x0F; // Black background, White foreground
- 
+uint8_t error_color = 0x04;
+
 // This function initiates the terminal by clearing it
 void term_init()
 {
@@ -57,7 +58,7 @@ void term_putc(char c)
 	default: // Normal characters just get displayed and then increment the column
 		{
 			const size_t index = (VGA_COLS * term_row) + term_col; // Like before, calculate the buffer index
-			vga_buffer[index] = ((uint16_t)term_color << 8) | c;
+			vga_buffer[index] = ((uint16_t)error_color << 8) | c;
 			term_col ++;
 			break;
 		}
