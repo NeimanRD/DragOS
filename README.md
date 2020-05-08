@@ -1,2 +1,2 @@
 # dragos
-A simple hobbyist project
+A simple hobbyist os project
