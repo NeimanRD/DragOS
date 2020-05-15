@@ -24,6 +24,6 @@
         call kernel_main
 
         cli
-        loop:
-            hlt
-            jmp loop
+    loop:
+        hlt
+        jmp loop

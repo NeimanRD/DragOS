@@ -1,0 +1,1 @@
+target_sources(dragos.kernel PRIVATE "boot.s" "tty.c")
