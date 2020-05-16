@@ -1,6 +1,17 @@
 cmake_minimum_required(VERSION 3.17)
 set(CMAKE_SYSTEM_NAME Generic)
 
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_HOST_SYSTEM_VERSION MATCHES "Microsoft")
+  set(WSL True)
+endif()
+
+if(WIN32)
+    if(NOT WSL)
+        message(FATAL_ERROR "No Windows Subsystem for Linux Detected!")
+    endif(NOT WSL)
+endif(WIN32)
+
+
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
     message(FATAL_ERROR "In-source builds are not allowed!")
 endif("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
@@ -20,8 +31,13 @@ enable_language(ASM-ATT)
 add_executable(dragos.kernel)
 add_subdirectory(kernel)
 
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/sysroot/")
+    file(REMOVE_RECURSE "${CMAKE_CURRENT_SOURCE_DIR}/sysroot/")
+endif()
 install(TARGETS dragos.kernel DESTINATION "${CMAKE_SOURCE_DIR}/sysroot/boot/")
 
 install(DIRECTORY "${KERNEL_INCLUDE_DIR}" DESTINATION "${CMAKE_SOURCE_DIR}/sysroot/usr/include/kernel/")
+
+
 
 target_link_libraries(dragos.kernel gcc)

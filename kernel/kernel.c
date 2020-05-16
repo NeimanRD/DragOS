@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <i386/tty.h>
+#include <kernel/tty.h>
 
 void kernel_main()
 {

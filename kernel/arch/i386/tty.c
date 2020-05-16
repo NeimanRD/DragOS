@@ -1,8 +1,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <i386/tty.h>
-#include <i386/vga.h>
+#include <kernel/tty.h>
+#include <kernel/vga.h>
 
 size_t strlen(const char* str)
 {
