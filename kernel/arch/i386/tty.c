@@ -3,16 +3,7 @@
 #include <stdint.h>
 #include <kernel/tty.h>
 #include <kernel/vga.h>
-
-size_t strlen(const char* str)
-{
-    size_t len = 0;
-    while (str[len])
-    {
-        len++;
-    }
-    return len;
-}
+#include <libk/string.h>
 
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
@@ -27,7 +18,7 @@ void tty_init(void)
 {
     terminal_row = 0;
     terminal_column = 0;
-    terminal_color = vga_color(COLOR_WHITE, COLOR_BLUE);
+    terminal_color = vga_color(COLOR_WHITE, COLOR_BLACK);
     terminal_buffer = (uint16_t*) 0xB8000;
     for (size_t y = 0; y < VGA_HEIGHT; y++)
     {
@@ -48,6 +39,12 @@ void tty_put_entry_at(unsigned char c, uint8_t color, size_t x, size_t y)
 
 void tty_putc(char c)
 {
+    if ((int)c == 0x0A)
+    {
+        terminal_row++;
+        terminal_column = 0;
+        return;
+    }
     tty_put_entry_at(c, terminal_color, terminal_column, terminal_row);
     if (++terminal_column == VGA_WIDTH)
     {

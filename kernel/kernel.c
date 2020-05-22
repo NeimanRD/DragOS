@@ -1,10 +1,10 @@
-#include <stddef.h>
-#include <stdbool.h>
-#include <stdint.h>
+#include <libk/stdio.h>
+#include <libk/string.h>
 #include <kernel/tty.h>
 
 void kernel_main()
 {
     tty_init();
-    tty_write_string("Hello, World!");
+    puts("Hello!\n");
+    puts("Hello");
 }

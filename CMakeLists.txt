@@ -1,14 +1,10 @@
 cmake_minimum_required(VERSION 3.17)
 set(CMAKE_SYSTEM_NAME Generic)
 
-if (CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_HOST_SYSTEM_VERSION MATCHES "Microsoft")
-  set(WSL True)
-endif()
-
 if(WIN32)
-    if(NOT WSL)
-        message(FATAL_ERROR "No Windows Subsystem for Linux Detected!")
-    endif(NOT WSL)
+    if(CYGWIN)
+        message(FATAL_ERROR "No Cygwin Detected!")
+    endif(CYGWIN)
 endif(WIN32)
 
 
@@ -19,7 +15,10 @@ endif("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
 set(CMAKE_ASM-ATT_COMPILE_OBJECT "${CMAKE_ASM-ATT_COMPILE_OBJECT} -ffreestanding -g")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wno-unused-parameter -ffreestanding -fno-builtin -fdiagnostics-color=always")
 
-find_program(CMAKE_C_COMPILER i686-elf-gcc)
+set(COMPILER_NAME "i686-elf-gcc")
+set(arch "i386")
+
+find_program(CMAKE_C_COMPILER COMPILER_NAME)
 if(NOT CMAKE_C_COMPILER)
     message(FATAL_ERROR "Cross-compiler not found for arch i686!")
 endif(NOT CMAKE_C_COMPILER)
@@ -40,4 +39,3 @@ install(DIRECTORY "${KERNEL_INCLUDE_DIR}" DESTINATION "${CMAKE_SOURCE_DIR}/sysro
 
 
 
-target_link_libraries(dragos.kernel gcc)

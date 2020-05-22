@@ -1,7 +1,6 @@
-set(arch "i386")
-set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} "-nostdlib -T ${CMAKE_CURRENT_SOURCE_DIR}/arch/${arch}/linker.ld -lgcc" PARENT_SCOPE)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib -T ${CMAKE_CURRENT_SOURCE_DIR}/arch/${arch}/linker.ld -lgcc" PARENT_SCOPE)
 target_include_directories(dragos.kernel PRIVATE "include/")
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/libk/")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/arch/${arch}/")
 set(KERNEL_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/" PARENT_SCOPE)
 target_sources(dragos.kernel PRIVATE kernel.c)
-

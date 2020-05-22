@@ -1,0 +1,1 @@
+target_sources(dragos.kernel PRIVATE "strlen.c")
