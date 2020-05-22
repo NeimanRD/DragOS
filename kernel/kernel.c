@@ -5,6 +5,5 @@
 void kernel_main()
 {
     tty_init();
-    puts("Hello!\n");
-    puts("Hello");
+    printf("Hello %i hello", 10);
 }

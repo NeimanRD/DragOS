@@ -8,20 +8,17 @@
 
 void printf(const char *format, ...)
 {
-    char *format_index;
     int format_i;
-    char *format_string;
     
     va_list args;
     va_start(args, format);
-    for(const char *format_index = format; *format_index == '\0'; format_index++)
+    for(; *format != '\0'; format++)
     {
-        putchar(*format_index);
-        if(*format_index == '%')
+        if(*format == '%')
         {
-            format_index++;
+            format++;
 
-            switch(*format_index)
+            switch(*format)
             {
                 case 'c' :
                     format_i = va_arg(args, int);
@@ -30,11 +27,13 @@ void printf(const char *format, ...)
                 
                 case 'i' :
                     format_i = va_arg(args, int);
-                    
+                    puts(itoa(format_i, 10));
                     break;
                     
             }
+            format++;
         }
+        putchar(*format);
     }
     va_end(args);
 
