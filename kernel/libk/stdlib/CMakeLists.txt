@@ -1,1 +1,2 @@
-target_sources(dragos.kernel PRIVATE "itoa.c")
+target_sources(dragos.kernel PRIVATE "itoa.c"
+                             PRIVATE "atoi.c")

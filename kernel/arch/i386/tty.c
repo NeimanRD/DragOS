@@ -31,6 +31,13 @@ void tty_init(void)
 
 }
 
+void tty_scroll()
+{
+    //start from row 2
+    //loop through each character and subtract VGA_WIDTH from them
+    //last row first put in previous row, then fill it with space
+}
+
 void tty_put_entry_at(unsigned char c, uint8_t color, size_t x, size_t y)
 {
     const size_t index = y * VGA_WIDTH + x;

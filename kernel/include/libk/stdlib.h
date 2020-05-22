@@ -4,5 +4,6 @@
 #include <stdbool.h>
 
 char *itoa(int num, int base);
+int atoi(const char *str);
 
 #endif
