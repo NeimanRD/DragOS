@@ -20,7 +20,7 @@ set(arch "i386")
 
 find_program(CMAKE_C_COMPILER COMPILER_NAME)
 if(NOT CMAKE_C_COMPILER)
-    message(FATAL_ERROR "Cross-compiler not found for arch i686!")
+    message(FATAL_ERROR "Cross-compiler not found for arch i386!")
 endif(NOT CMAKE_C_COMPILER)
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_ASM-ATT_COMPILER)

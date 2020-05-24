@@ -6,4 +6,8 @@
 void kernel_main()
 {
     tty_init();
+    for (int i = 0; i < 26; i++)
+    {
+        printf("%i\n", i);
+    }
 }

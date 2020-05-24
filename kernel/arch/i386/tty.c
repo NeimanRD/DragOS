@@ -19,13 +19,13 @@ void tty_init(void)
     terminal_row = 0;
     terminal_column = 0;
     terminal_color = vga_color(COLOR_WHITE, COLOR_BLACK);
-    terminal_buffer = (uint16_t*) 0xB8000;
+    terminal_buffer = (uint16_t*) 0xB8000; // memory location for VGA text buffer
     for (size_t y = 0; y < VGA_HEIGHT; y++)
     {
         for (size_t x = 0; x < VGA_WIDTH; x++)
         {
-            const size_t index = y * VGA_WIDTH + x;
-            terminal_buffer[index] = vga_text(' ', terminal_color);
+            const size_t index = y * VGA_WIDTH + x; // calculates the location of each character
+            terminal_buffer[index] = vga_text(' ', terminal_color); // sets each screen character to a space with the set background
         }
     }
 
@@ -33,9 +33,21 @@ void tty_init(void)
 
 void tty_scroll()
 {
-    //start from row 2
-    //loop through each character and subtract VGA_WIDTH from them
-    //last row first put in previous row, then fill it with space
+    terminal_column = 0;
+    for (size_t y = 1; y < VGA_HEIGHT; y++)
+    {
+        for (size_t x = 0; x < VGA_WIDTH; x++)
+        {
+            const size_t target_index = (y - 1) * VGA_WIDTH + x;
+            const size_t current_index = y * VGA_WIDTH + x;
+            terminal_buffer[target_index] = terminal_buffer[current_index];
+        }
+    }
+    for (size_t x = 0; x < VGA_WIDTH; x++)
+    {
+        const size_t target_index = (VGA_HEIGHT - 1) * VGA_WIDTH + x;
+        terminal_buffer[target_index] = vga_text(' ', terminal_color);
+    }
 }
 
 void tty_put_entry_at(unsigned char c, uint8_t color, size_t x, size_t y)
@@ -46,20 +58,24 @@ void tty_put_entry_at(unsigned char c, uint8_t color, size_t x, size_t y)
 
 void tty_putc(char c)
 {
-    if ((int)c == 0x0A)
+    if (c == '\n')
     {
         terminal_row++;
         terminal_column = 0;
-        return;
     }
-    tty_put_entry_at(c, terminal_color, terminal_column, terminal_row);
-    if (++terminal_column == VGA_WIDTH)
+    else
     {
-        terminal_column = 0;
-        if (++terminal_row == VGA_HEIGHT)
+        tty_put_entry_at(c, terminal_color, terminal_column, terminal_row);
+        if (++terminal_column == VGA_WIDTH)
         {
-            terminal_row = 0;
+            terminal_column = 0;
+            terminal_row++;
         }
+    }
+    if (terminal_row == VGA_HEIGHT)
+    {
+        tty_scroll();
+        terminal_row = VGA_HEIGHT - 1;
     }
 }
 

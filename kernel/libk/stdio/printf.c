@@ -50,8 +50,9 @@ void printf(const char *format, ...)
                     puts(itoa(format_i, 16));
                     break;
             }
+        } else {
+            putchar(*format);
         }
-        putchar(*format);
     }
     va_end(args);
 
