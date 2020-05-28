@@ -1,3 +1,3 @@
-# RadumOS
-A simple hobbyist os project
+# ReduxOS
+A simple hobbyist os project (Not confused with Redox)
 
