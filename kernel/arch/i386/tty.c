@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <kernel/tty.h>
-#include <kernel/vga.h>
+#include "vga.h"
 #include <libk/string.h>
 
 static const size_t VGA_WIDTH = 80;
@@ -36,12 +36,9 @@ void tty_scroll()
     terminal_column = 0;
     for (size_t y = 1; y < VGA_HEIGHT; y++)
     {
-        for (size_t x = 0; x < VGA_WIDTH; x++)
-        {
-            const size_t target_index = (y - 1) * VGA_WIDTH + x;
-            const size_t current_index = y * VGA_WIDTH + x;
-            terminal_buffer[target_index] = terminal_buffer[current_index];
-        }
+        const size_t target_row_index = (y - 1) * VGA_WIDTH;
+        const size_t current_row_index = y * VGA_WIDTH;
+        memcpy(&terminal_buffer[target_row_index], &terminal_buffer[current_row_index], 2 * VGA_WIDTH);
     }
     for (size_t x = 0; x < VGA_WIDTH; x++)
     {

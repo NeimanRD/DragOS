@@ -21,7 +21,7 @@
 
     _start:
         mov $stacktop, %esp
-        call kernel_main
+        call _kernel_main
 
         cli
     loop:

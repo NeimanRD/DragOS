@@ -1,1 +1,3 @@
-target_sources(dragos.kernel PRIVATE "boot.s" "tty.c")
+target_sources(radumos.kernel PRIVATE "boot.s"
+                             PRIVATE "tty.c"
+                             PRIVATE "vga.h")

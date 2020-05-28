@@ -25,15 +25,15 @@ endif(NOT CMAKE_C_COMPILER)
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_ASM-ATT_COMPILER)
 
-project(DragOS C)
+project(radumos C)
 enable_language(ASM-ATT)
-add_executable(dragos.kernel)
+add_executable(radumos.kernel)
 add_subdirectory(kernel)
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/sysroot/")
     file(REMOVE_RECURSE "${CMAKE_CURRENT_SOURCE_DIR}/sysroot/")
 endif()
-install(TARGETS dragos.kernel DESTINATION "${CMAKE_SOURCE_DIR}/sysroot/boot/")
+install(TARGETS radumos.kernel DESTINATION "${CMAKE_SOURCE_DIR}/sysroot/boot/")
 
 install(DIRECTORY "${KERNEL_INCLUDE_DIR}" DESTINATION "${CMAKE_SOURCE_DIR}/sysroot/usr/include/kernel/")
 

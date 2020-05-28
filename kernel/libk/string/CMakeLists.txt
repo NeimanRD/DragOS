@@ -1,1 +1,3 @@
-target_sources(dragos.kernel PRIVATE "strlen.c")
+target_sources(radumos.kernel PRIVATE "strlen.c"
+                             PRIVATE "memcpy.c"
+                             PRIVATE "memset.c")
