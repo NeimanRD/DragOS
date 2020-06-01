@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <libk/stdio.h>
 #include <libk/string.h>
-#include <kernel/tty.h>
+#include <modules/tty.h>
 
 void kernel_main()
 {
