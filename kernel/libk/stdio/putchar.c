@@ -1,5 +1,5 @@
 #include <libk/stdio.h>
-#include <kernel/tty.h>
+#include <modules/tty.h>
 
 void putchar(int ic)
 {
