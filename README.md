@@ -2,9 +2,9 @@
 A simple hobbyist os project (Not confused with Redox)
 
 ## Things to do
-Bare Bones  
+~~Bare Bones~~  
 Working Build System  
-Terminal Support  
+~~Terminal Support~~  
 GDT  
 Memory Management  
 Interrupts        
