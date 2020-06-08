@@ -1,0 +1,3 @@
+target_sources(redux.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/printf.c"
+                            PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/putchar.c"
+                            PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/puts.c")

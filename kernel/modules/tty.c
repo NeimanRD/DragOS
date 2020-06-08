@@ -1,8 +1,6 @@
 #include <stdbool.h>
-#include <stddef.h>
 #include <stdint.h>
 #include <modules/tty.h>
-#include <modules/vga.h>
 #include <libk/string.h>
 
 /* Set size of buffer */
