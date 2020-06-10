@@ -14,6 +14,7 @@ endif("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
 
 set(CMAKE_ASM-ATT_COMPILE_OBJECT "${CMAKE_ASM-ATT_COMPILE_OBJECT} -ffreestanding -g")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wno-unused-parameter -ffreestanding -fno-builtin -fdiagnostics-color=always")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib -T ${CMAKE_CURRENT_SOURCE_DIR}/boot/linker.ld")
 
 set(COMPILER_NAME "i686-elf")
 set(arch "i386")
@@ -29,14 +30,18 @@ set(BOOT "/boot")
 set(USR "/usr")
 set(INCLUDE "/include")
 
-project(ReduxOS VERSION 1.0 LANGUAGES C)
+project(spazv1 VERSION 1.0 LANGUAGES C)
 enable_language(ASM-ATT)
-add_executable(redux.kernel)
-add_subdirectory(kernel)
+add_executable(spazv1.kernel)
+target_include_directories(spazv1.kernel PRIVATE include)
+add_subdirectory(libk)
+add_subdirectory(boot)
+add_subdirectory(drivers)
+set(KERNEL_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/")
+target_sources(spazv1.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/kernel.c")
 
-if(EXISTS "${SYSROOT}")
-    file(REMOVE_RECURSE "${SYSROOT}")
-endif(EXISTS "${SYSROOT}")
-install(TARGETS redux.kernel DESTINATION "${SYSROOT}${BOOT}")
+target_link_libraries(spazv1.kernel gcc)
+
+install(TARGETS spazv1.kernel DESTINATION "${SYSROOT}${BOOT}")
 
 install(DIRECTORY "${KERNEL_INCLUDE_DIR}" DESTINATION "${SYSROOT}${USR}${INCLUDE}/kernel/")

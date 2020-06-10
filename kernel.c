@@ -6,5 +6,5 @@
 void kernel_main()
 {
     tty_init();
-    
+    printf("Test");
 }

@@ -1,1 +1,0 @@
-target_sources(redux.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/boot.s")

@@ -1,7 +1,0 @@
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib -T ${CMAKE_CURRENT_SOURCE_DIR}/boot/linker.ld -lgcc" PARENT_SCOPE)
-target_include_directories(redux.kernel PUBLIC include)
-add_subdirectory(libk)
-add_subdirectory(boot)
-add_subdirectory(modules)
-set(KERNEL_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/" PARENT_SCOPE)
-target_sources(redux.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/kernel.c")

@@ -1,5 +1,5 @@
-# ReduxOS
-A simple hobbyist os project (Not confused with Redox)
+# spazv1
+A simple x86 kernel
 
 ## Things to do
 ~~Bare Bones~~  
