@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <stdint.h>
-#include <modules/tty.h>
+#include <drivers/tty.h>
 #include <libk/string.h>
 
 /* Set size of buffer */

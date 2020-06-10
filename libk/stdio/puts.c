@@ -1,5 +1,5 @@
 #include <libk/stdio.h>
-#include <modules/tty.h>
+#include <drivers/tty.h>
 
 void puts(const char *string)
 {
