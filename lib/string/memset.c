@@ -1,4 +1,4 @@
-#include <libk/string.h>
+#include <lib/string.h>
 
 void *memset(void *dest, int value, size_t len)
 {

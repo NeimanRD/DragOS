@@ -1,6 +1,6 @@
 #include <stdint.h>
-#include <libk/stdio.h>
-#include <libk/string.h>
+#include <lib/stdio.h>
+#include <lib/string.h>
 #include <drivers/tty.h>
 
 void kernel_main()

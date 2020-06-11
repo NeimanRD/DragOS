@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <drivers/tty.h>
-#include <libk/string.h>
+#include <lib/string.h>
 
 /* Set size of buffer */
 static const size_t VGA_WIDTH = 80;

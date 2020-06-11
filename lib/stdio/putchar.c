@@ -1,4 +1,4 @@
-#include <libk/stdio.h>
+#include <lib/stdio.h>
 #include <drivers/tty.h>
 
 void putchar(int ic)

@@ -1,8 +1,8 @@
 #include <stdarg.h>
 #include <stddef.h>
-#include <libk/stdio.h>
-#include <libk/string.h>
-#include <libk/stdlib.h>
+#include <lib/stdio.h>
+#include <lib/string.h>
+#include <lib/stdlib.h>
 
 //A minimal implementation of printf
 

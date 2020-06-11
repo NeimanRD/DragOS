@@ -1,4 +1,4 @@
-#include <libk/stdlib.h>
+#include <lib/stdlib.h>
 
 char *itoa(int num, int base)
 {

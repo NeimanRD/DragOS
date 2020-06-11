@@ -1,4 +1,4 @@
-#include <libk/stdlib.h>
+#include <lib/stdlib.h>
 
 int atoi(const char *str)
 {

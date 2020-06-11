@@ -34,11 +34,12 @@ project(spazv1 VERSION 1.0 LANGUAGES C)
 enable_language(ASM-ATT)
 add_executable(spazv1.kernel)
 target_include_directories(spazv1.kernel PRIVATE include)
-add_subdirectory(libk)
+add_subdirectory(lib)
 add_subdirectory(boot)
 add_subdirectory(drivers)
+add_subdirectory(kernel)
+
 set(KERNEL_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/")
-target_sources(spazv1.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/kernel.c")
 
 target_link_libraries(spazv1.kernel gcc)
 
