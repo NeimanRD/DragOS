@@ -2,10 +2,10 @@
 #include <stdint.h>
 #include <drivers/tty.h>
 #include <lib/string.h>
+#include <drivers/vga.h>
+#include <drivers/cursor.h>
 
 /* Set size of buffer */
-static const size_t VGA_WIDTH = 80;
-static const size_t VGA_HEIGHT = 25;
 
 size_t terminal_row;
 size_t terminal_column;
@@ -13,8 +13,9 @@ size_t terminal_column;
 uint8_t terminal_color;
 uint16_t *terminal_buffer;
 
-void tty_init(void)
+void tty_init()
 {
+    disable_cursor();
     terminal_row = 0;
     terminal_column = 0;
     terminal_color = vga_color(COLOR_WHITE, COLOR_BLACK);

@@ -2,7 +2,6 @@
 #define _KERNEL_TTY_H
  
 #include <stddef.h>
-#include "vga.h"
  
 void tty_init(void);
 void tty_putc(char c);
