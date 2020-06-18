@@ -1,5 +1,5 @@
-#ifndef STDIO_H
-#define STDIO_H
+#ifndef PRINT_H
+#define PRINT_H
 
 // A minimal stdio header for the kernel
 

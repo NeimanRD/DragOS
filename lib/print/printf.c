@@ -1,6 +1,6 @@
 #include <stdarg.h>
 #include <stddef.h>
-#include <lib/stdio.h>
+#include <lib/print.h>
 #include <lib/string.h>
 #include <lib/stdlib.h>
 

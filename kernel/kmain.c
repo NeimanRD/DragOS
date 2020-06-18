@@ -1,5 +1,5 @@
 #include <stdint.h>
-#include <lib/stdio.h>
+#include <lib/print.h>
 #include <lib/string.h>
 #include <drivers/tty.h>
 
