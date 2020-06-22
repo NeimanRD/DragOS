@@ -1,10 +1,13 @@
-#include <stdint.h>
 #include <lib/print.h>
-#include <lib/string.h>
 #include <drivers/tty.h>
+#include <cpu/gdt.h>
+#include <cpu/idt.h>
 
 void kernel_main()
 {
+    init_gdt();
+    init_idt();
     tty_init();
     printf("Test");
+    __asm__  ("div %0" :: "r"(0));
 }
