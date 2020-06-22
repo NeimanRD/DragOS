@@ -1,1 +1,1 @@
-target_sources(spazv1.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/boot.s")
+target_sources(spazv1.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/boot.asm")

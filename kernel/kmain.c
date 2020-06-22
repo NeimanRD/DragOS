@@ -8,6 +8,5 @@ void kernel_main()
     init_gdt();
     init_idt();
     tty_init();
-    printf("Test");
-    __asm__  ("div %0" :: "r"(0));
+    printf("Test\n");
 }

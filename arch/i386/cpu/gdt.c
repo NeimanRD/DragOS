@@ -1,6 +1,7 @@
 #include <cpu/gdt.h>
 
 extern void gdt_flush(uint32_t);
+static void gdt_set_gate(int num, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
 
 gdt_entry_t gdt_entries[5]; 
 gdt_ptr_t gdt_ptr;
