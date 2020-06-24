@@ -1,1 +1,1 @@
-target_sources(spazv1.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/kmain.c")
+target_sources(solcore.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/kmain.c")

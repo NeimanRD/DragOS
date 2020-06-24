@@ -1,4 +1,4 @@
-# spazv1
+# solcore
 A simple x86 kernel
 
 ## Building the kernel
