@@ -1,6 +1,5 @@
 # Solcore
 A simple kernel targeting the x86 architecture
->>>>>>> 26db1aaeae92806766f3b36cf1933dc0bf4dd0a1
 
 ## Building the kernel
 You will need a [cross-compiler](https://wiki.osdev.org/GCC_Cross-Compiler) to build this kernel, as an OS-specific toolchain is not available yet.  
