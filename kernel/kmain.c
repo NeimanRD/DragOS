@@ -14,4 +14,5 @@ void kernel_main()
     init_timer(100);
     asm volatile("sti");
     tty_init();
+    printf("Test\n");
 }
