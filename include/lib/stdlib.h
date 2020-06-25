@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-char *itoa(int num, int base);
+char *itoa(unsigned int num, int base);
 int atoi(const char *str);
 
 #endif

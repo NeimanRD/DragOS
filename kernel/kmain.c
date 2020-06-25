@@ -4,6 +4,7 @@
 #include <cpu/idt.h>
 #include <cpu/irq.h>
 #include <drivers/timer.h>
+#include <lib/stdlib.h>
 
 void kernel_main()
 {
@@ -13,5 +14,4 @@ void kernel_main()
     init_timer(100);
     asm volatile("sti");
     tty_init();
-    printf("Test\n");
 }

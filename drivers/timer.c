@@ -9,10 +9,10 @@ int tick = 0;
 static void timer_handler(regs_t *regs)
 {
     tick++;
-    if (tick % 100 == 0)
-    {
-        printf("A second has passed\n");
-    }
+    //if (tick % 100 == 0)
+    //{
+        //printf("A second has passed\n");
+    //}
 }
 
 void init_timer(uint32_t frequency)

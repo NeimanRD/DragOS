@@ -28,6 +28,11 @@ void printf(const char *format, ...)
                     break;
                 case 'i' :
                     format_i = va_arg(args, int);
+                    if (format_i < 0)
+                    {
+                        format_i = -format_i;
+                        putchar('-');
+                    }
                     puts(itoa(format_i, 10));
                     break;
                 case 'o' :
