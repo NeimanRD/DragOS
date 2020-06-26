@@ -10,11 +10,11 @@ unsigned int seconds = 0;
 static void timer_handler(regs_t *regs)
 {
     tick++;
-    if (tick % 100 == 0)
+    /* if (tick % 100 == 0)
     {
         seconds++;
         printf("%i seconds has passed\n", seconds);
-    }
+    } */
 }
 
 void init_timer(uint32_t frequency)
