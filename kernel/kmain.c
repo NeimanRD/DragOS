@@ -11,8 +11,8 @@ void kernel_main()
     init_gdt();
     init_idt();
     init_irq();
-    init_timer(100);
     asm volatile("sti");
+    init_timer(100);
     tty_init();
-    printf("Test\n");
+    
 }
