@@ -24,6 +24,8 @@ global _start
 _start:
     mov esp, stack_top
     cli
+    push eax
+    push ebx
     extern kernel_main
     call kernel_main
 .hang:	

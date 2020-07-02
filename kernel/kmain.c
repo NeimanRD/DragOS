@@ -1,18 +1,15 @@
 #include <lib/print.h>
+#include <cpu/cpu.h>
 #include <drivers/tty.h>
-#include <cpu/gdt.h>
-#include <cpu/idt.h>
-#include <cpu/irq.h>
 #include <drivers/timer.h>
 #include <lib/stdlib.h>
+#include <multiboot.h>
+#include <drivers/vga.h>
 
-void kernel_main()
+void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 {
-    init_gdt();
-    init_idt();
-    init_irq();
-    asm volatile("sti");
+    tty_init(COLOR_WHITE, COLOR_BLACK);
+    init_dt();
     init_timer(100);
-    tty_init();
     
 }
