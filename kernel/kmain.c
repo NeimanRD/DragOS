@@ -11,5 +11,5 @@ void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     tty_init(COLOR_WHITE, COLOR_BLACK);
     init_dt();
     init_timer(100);
-    
+    cprintf(COLOR_RED, "Test %i\n", 16);
 }
