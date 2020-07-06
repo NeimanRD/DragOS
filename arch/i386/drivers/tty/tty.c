@@ -6,6 +6,7 @@
 #include <lib/string.h>
 #include <drivers/cursor.h>
 #include <drivers/vga.h>
+#include <drivers/tty/log.h>
 
 /* Set size of buffer */
 
@@ -36,7 +37,7 @@ void tty_init(v_color_t fg, v_color_t bg)
             terminal_buffer[index] = vga_text(' ', terminal_color); // sets each screen character to a space with the set background
         }
     }
-
+    logf(tty, "Initialized the screen\n");
 }
 
 void tty_scroll() 

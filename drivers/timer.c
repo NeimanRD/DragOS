@@ -3,6 +3,7 @@
 #include <drivers/timer.h>
 #include <lib/print.h>
 #include <drivers/io.h>
+#include <drivers/tty/log.h>
 
 int tick = 0;
 unsigned int seconds = 0;
@@ -10,11 +11,11 @@ unsigned int seconds = 0;
 static void timer_handler(regs_t *regs)
 {
     tick++;
-    /* if (tick % 100 == 0)
+    if (tick % 100 == 0)
     {
         seconds++;
-        printf("%i seconds has passed\n", seconds);
-    } */
+        logf(device, "%i seconds has passed\n", seconds);
+    }
 }
 
 void init_timer(uint32_t frequency)
@@ -30,4 +31,5 @@ void init_timer(uint32_t frequency)
 
     outb(0x40, l);
     outb(0x40, h);
+    logf(cpu, "Initialized the timer\n");
 }

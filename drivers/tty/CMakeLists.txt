@@ -1,0 +1,3 @@
+target_sources(solcore.kernel PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/serial.c"
+                              PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/logf.c"
+                              PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/logf_internal.c")

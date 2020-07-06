@@ -1,12 +1,8 @@
-#include <stdarg.h>
-#include <stddef.h>
-#include <lib/print.h>
-#include <lib/string.h>
+#include <drivers/tty/log.h>
+#include <drivers/tty/serial.h>
 #include <lib/stdlib.h>
-#include <drivers/tty.h>
 
-
-int cprintf_internal(v_color_t color, const char *format, va_list args)
+int logf_internal(const char *format, va_list args)
 {
     char *format_string;
     int format_i;
@@ -22,35 +18,35 @@ int cprintf_internal(v_color_t color, const char *format, va_list args)
             {
                 case 'c' :
                     format_i = va_arg(args, int);
-                    putchar(format_i, color);
+                    serial_putc(format_i);
                     break;
                 case 'i' :
                     format_i = va_arg(args, int);
                     if (format_i < 0)
                     {
                         format_i = -format_i;
-                        putchar('-', color);
+                        serial_putc('-');
                     }
-                    tty_color_write(itoa(format_i, 10), color);
+                    serial_write(itoa(format_i, 10));
                     break;
                 case 'o' :
                     format_i = va_arg(args, int);
-                    tty_color_write(itoa(format_i, 8), color);
+                    serial_write(itoa(format_i, 8));
                     break;
                 case 's' :
                     format_string = va_arg(args, char*);
-                    tty_color_write(format_string, color);
+                    serial_write(format_string);
                     break;
                 case '#' :
-                    tty_color_write("0x", color);
+                    serial_write("0x");
                     format++;
                     format_i = va_arg(args, unsigned int);
-                    tty_color_write(itoa(format_i, 16), color);
+                    serial_write(itoa(format_i, 16));
                     format++;
                     break;  
                 case 'x' :
                     format_i = va_arg(args, unsigned int);
-                    tty_color_write(itoa(format_i, 16), color);
+                    serial_write(itoa(format_i, 16));
                     break;
                 default:
                     no = -1;
@@ -59,7 +55,7 @@ int cprintf_internal(v_color_t color, const char *format, va_list args)
         } 
         else 
         {
-            putchar(*format, color);
+            serial_putc(*format);
         }
     }
     return no;

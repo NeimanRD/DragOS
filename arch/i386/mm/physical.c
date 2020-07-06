@@ -177,25 +177,21 @@ void pmmngr_free_blocks(void* p, size_t size)
 
 static size_t pmmngr_get_memory_size() 
 {
-
 	return mm_memory_size;
 }
 
 static uint32_t pmmngr_get_block_count() 
 {
-
 	return mm_max_blocks;
 }
 
 static uint32_t pmmngr_get_use_block_count()
 {
-
 	return mm_used_blocks;
 }
 
 static uint32_t pmmngr_get_free_block_count() 
 {
-
 	return mm_max_blocks - mm_used_blocks;
 }
 
