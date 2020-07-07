@@ -5,7 +5,6 @@
 #include <lib/stdlib.h>
 #include <multiboot.h>
 #include <drivers/vga.h>
-#include <mm/physical.h>
 #include <lib/string.h>
 #include <drivers/tty/log.h>
 
