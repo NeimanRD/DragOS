@@ -136,4 +136,5 @@ irq_common_stub:
     pop ds
     popa
     add esp, 8
+    sti
     iret

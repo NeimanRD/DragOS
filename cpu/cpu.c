@@ -11,5 +11,4 @@ void init_dt()
     logf(cpu, "Initialized IDT\n");
     init_irq();
     logf(cpu, "Initialized IRQs\n");
-    asm volatile("sti");
 }
