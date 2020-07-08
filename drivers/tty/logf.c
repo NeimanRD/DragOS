@@ -6,6 +6,7 @@ char *logtype_string[] = {
     "mm",
     "tty",
     "device",
+    "kernel",
     "warning",
     "error"
 };

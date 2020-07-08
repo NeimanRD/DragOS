@@ -1,4 +1,4 @@
-#include <cpu/isr.h>
+#include <cpu/idt.h>
 #include <lib/print.h>
 
 char *exception_msg[] = 

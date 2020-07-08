@@ -10,6 +10,7 @@ typedef enum log_type
     mm,
     tty,
     device,
+    kernel,
     warning,
     error, 
 } logtype_t;

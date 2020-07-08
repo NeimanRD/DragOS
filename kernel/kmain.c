@@ -2,10 +2,8 @@
 #include <cpu/cpu.h>
 #include <drivers/tty.h>
 #include <drivers/timer.h>
-#include <lib/stdlib.h>
 #include <multiboot.h>
 #include <drivers/vga.h>
-#include <lib/string.h>
 #include <drivers/tty/log.h>
 
 

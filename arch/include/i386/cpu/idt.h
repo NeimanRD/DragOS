@@ -22,7 +22,19 @@ struct idt_ptr_struct
 } __attribute__((packed));
 typedef struct idt_ptr_struct idt_ptr_t;
 
+typedef struct regs
+{
+  uint32_t ds;             // Data segment selector.
+  uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax; // Pushed by pusha.
+  uint32_t int_no, err_code; // Interrupt number and error code (if applicable).
+  uint32_t eip, cs, eflags, useresp, ss; // Pushed by the processor automatically.
+} regs_t;
+
 void init_idt();
-void idt_set_gate(uint8_t num, uint32_t base, uint16_t sel, uint8_t flags);
+
+typedef void (*interrupt_handler_t)(regs_t *);
+
+void register_interrupt_handler(uint8_t n, interrupt_handler_t h);
+
 
 #endif
