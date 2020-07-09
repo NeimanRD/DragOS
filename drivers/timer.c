@@ -9,7 +9,10 @@ int tick = 0;
 static void timer_callback(regs_t *regs)
 {
     tick++;
-    logf(device, "Tick: %i", tick);
+    if (tick % 100 == 0)
+    {
+        logf(device, "%i seconds passed\n", tick / 100);
+    }
 }
 
 void init_timer(uint32_t frequency)

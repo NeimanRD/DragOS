@@ -8,4 +8,5 @@ void init_dt()
     logf(cpu, "Initialized GDT\n");
     init_idt();
     logf(cpu, "Initialized IDT\n");
+    asm volatile("sti");
 }
