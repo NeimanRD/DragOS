@@ -3,13 +3,10 @@
 #include <lib/print.h>
 #include <stdint.h>
 
-static void print_stack_trace();
-
 void panic(const char *msg)
 {
     logf(kernel, "System Panic: %s\n", msg);
-    printf("*** System Panic: %s\n", msg);
-    printf("***\n");
+    cprintf(COLOR_RED, "System Panic: %s ", msg);
     logf(kernel, "Halting system\n");
     for (;;);
 }

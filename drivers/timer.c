@@ -1,26 +1,20 @@
-#include <cpu/irq.h>
-#include <cpu/isr.h>
+#include <cpu/idt.h>
 #include <drivers/timer.h>
 #include <lib/print.h>
 #include <drivers/io.h>
 #include <drivers/tty/log.h>
 
 int tick = 0;
-unsigned int seconds = 0;
 
-static void timer_handler(regs_t *regs)
+static void timer_callback(regs_t *regs)
 {
     tick++;
-    if (tick % 100 == 0)
-    {
-        seconds++;
-        logf(device, "%i seconds has passed\n", seconds);
-    }
+    logf(device, "Tick: %i", tick);
 }
 
 void init_timer(uint32_t frequency)
 {
-    irq_install_handler(0, &timer_handler);
+    register_interrupt_handler(32, &timer_callback);
 
     uint32_t divisor = 1193180 / frequency;
 

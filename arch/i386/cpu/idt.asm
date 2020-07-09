@@ -53,7 +53,7 @@ ISR_NOERRCODE 255
 
 
 
-extern isr_handler
+extern idt_handler
 
 global isr_common_stub
 

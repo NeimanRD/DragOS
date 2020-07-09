@@ -2,6 +2,8 @@
 #include <lib/string.h>
 #include <stdint.h>
 #include <drivers/tty/log.h>
+#include <kernel/panic.h>
+#include <drivers/io.h>
 
 extern void idt_flush(uint32_t);
 
@@ -151,7 +153,7 @@ static void idt_set_gate(uint8_t num, uint32_t base, uint16_t sel, uint8_t flags
     idt_entries[num].flags   = flags /* | 0x60 */;
 }
 
-void idt_handler (regs_t *regs)
+void idt_handler(regs_t *regs)
 {
   if (interrupt_handlers [regs->int_no])
     interrupt_handlers [regs->int_no] (regs);

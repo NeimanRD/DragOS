@@ -106,5 +106,5 @@ void tty_write_string(const char* str)
 
 void tty_color_write(const char* data, v_color_t fg)
 {
-    tty_write(data, strlen(data), vga_color(fg, COLOR_BLACK));
+    tty_write(data, strlen(data), vga_color(fg, background));
 }
