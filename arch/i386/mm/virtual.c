@@ -122,9 +122,9 @@ void page_fault (regs_t *regs)
   uint32_t cr2;
   asm volatile ("mov %%cr2, %0" : "=r" (cr2));
 
-  cprintf(COLOR_LIGHT_RED, "Page fault at %x, faulting address %x\n", regs->eip, cr2);
+  cprintf(COLOR_RED, "Page fault at %x, faulting address %x\n", regs->eip, cr2);
   logf(error, "Page fault at %x, faulting address %x\n", regs->eip, cr2);
-  cprintf(COLOR_LIGHT_RED, "Error code: %x\n", regs->err_code);
-  panic ("");
+  cprintf(COLOR_RED, "Error code: %x\n", regs->err_code);
+  panic("Page fault");
   for (;;);
 }

@@ -12,8 +12,10 @@
 void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 {
     tty_init(COLOR_WHITE, COLOR_BLACK);
+
     init_dt();
     init_timer(100);
+
     init_pmm(mbd->mem_upper);
     init_vmm();
     uint32_t i = mbd->mmap_addr;
@@ -31,4 +33,7 @@ void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 
         i += me->size + sizeof (uint32_t);
     }
+
+    uint32_t *ptr = (uint32_t*) 0xA0000000;
+    uint32_t page_fault = *ptr;
 }
