@@ -46,7 +46,6 @@ int cprintf_internal(v_color_t color, const char *format, va_list args)
                     format++;
                     format_i = va_arg(args, unsigned int);
                     tty_color_write(itoa(format_i, 16), color);
-                    format++;
                     break;  
                 case 'x' :
                     format_i = va_arg(args, unsigned int);

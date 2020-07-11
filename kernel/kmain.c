@@ -12,6 +12,13 @@
 void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 {
     tty_init(COLOR_WHITE, COLOR_BLACK);
+    
+    if (MULTIBOOT_BOOTLOADER_MAGIC != magic)
+    {
+        cprintf(COLOR_RED, "Error: Magic number %#x is invalid!\n", magic);
+        logf(error, "Invalid magic number: %#x \n", magic);
+        for (;;);
+    }
 
     init_dt();
     init_timer(100);
