@@ -21,7 +21,7 @@ int cprintf_internal(v_color_t color, const char *format, va_list args)
             switch(*format)
             {
                 case 'c' :
-                    format_i = va_arg(args, int);
+                    format_i = (char) va_arg(args, int);
                     putchar(format_i, color);
                     break;
                 case 'i' :
