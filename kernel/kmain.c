@@ -46,7 +46,7 @@ void kernel_main(multiboot_info_t* mbd, unsigned int magic)
             {
                 map->type = 6;
             }
-            printf("[base_addr_high = %#x, base_addr_low = %#x\nlength_high = %#x, length_low = %#x, type = %#x (%s)]\n", map->base_addr_high, map->base_addr_low, map->length_high, map->length_low, map->type, mem_type[map->type - 1]);
+            printf("[base_addr_high = %#x, base_addr_low = %#x length_high = %#x, length_low = %#x, type = %#x (%s)]\n", map->base_addr_high, map->base_addr_low, map->length_high, map->length_low, map->type, mem_type[map->type - 1]);
         }
     }
 
