@@ -8,6 +8,15 @@
 #include <mm/physical.h>
 #include <mm/virtual.h>
 
+char* mem_type[] = 
+{
+    "Available",
+    "Reserved",
+    "ACPI",
+    "Reserved",
+    "Defective",
+    "Reserved"
+};
 
 void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 {
@@ -20,6 +29,27 @@ void kernel_main(multiboot_info_t* mbd, unsigned int magic)
         for (;;);
     }
 
+    if (mbd->flags & MULTIBOOT_INFO_MEMORY)
+    {
+        printf("mem_lower = %i KB, mem_upper = %i KB\n", mbd->mem_lower, mbd->mem_upper);
+    }
+
+    if (mbd->flags & MULTIBOOT_INFO_MEM_MAP)
+    {
+        printf("mmap_addr: %#x, mmap_length: %#x\n", mbd->mmap_addr, mbd->mmap_length);
+
+        for (multiboot_memory_map_t* map = (multiboot_memory_map_t*) mbd->mmap_addr; 
+            (uint32_t) map < mbd->mmap_addr + mbd->mmap_length;
+            map = (multiboot_memory_map_t*) ((uint32_t) map + map->size + sizeof(map->size)))
+        {
+            if (map->type > 5)
+            {
+                map->type = 6;
+            }
+            printf("[base_addr_high = %#x, base_addr_low = %#x\nlength_high = %#x, length_low = %#x, type = %#x (%s)]\n", map->base_addr_high, map->base_addr_low, map->length_high, map->length_low, map->type, mem_type[map->type - 1]);
+        }
+    }
+
     init_dt();
     init_timer(100);
 
@@ -28,7 +58,7 @@ void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     uint32_t i = mbd->mmap_addr;
     while (i < mbd->mmap_addr + mbd->mmap_length)
     {
-        multiboot_memory_map_t *me = (multiboot_memory_map_t*) i;
+        multiboot_memory_map_t* me = (multiboot_memory_map_t*) i;
         if (me->type == 1)
         {
             uint32_t j;
@@ -40,7 +70,4 @@ void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 
         i += me->size + sizeof (uint32_t);
     }
-
-    uint32_t *ptr = (uint32_t*) 0xA0000000;
-    uint32_t page_fault = *ptr;
 }
